@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoParts Egypt | قطع غيار السيارات</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">⚙</span>
+        <div class="logo-text">
+          <span class="logo-en">AutoParts</span>
+          <span class="logo-ar">اسوان</span>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active" data-page="home">الرئيسية</a></li>
+        <li><a href="#products" class="nav-link" data-page="products">المنتجات</a></li>
+        <li><a href="#contact" class="nav-link" data-page="contact">تواصل معنا</a></li>
+      </ul>
+      <button class="cart-btn" id="cartToggle">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== CART SIDEBAR ====== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>🛒 سلة المشتريات</h3>
+      <button class="close-cart" id="closeCart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <span>🔧</span>
+        <p>السلة فارغة</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>الإجمالي:</span>
+        <span class="total-price" id="totalPrice">0 EGP</span>
+      </div>
+      <button class="checkout-btn">إتمام الطلب</button>
+    </div>
+  </div>
+
+  <!-- ====== PAGE: HOME ====== -->
+  <section id="home" class="page active">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600&q=80" alt="car" class="hero-img"/>
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">AP الأول في مصر</div>
+        <h1 class="hero-title">
+          <span class="title-en">Car Parts</span>
+          <span class="title-ar">قطع غيار السيارات</span>
+          <span class="title-sub">بأفضل الأسعار في مصر</span>
+        </h1>
+        <p class="hero-desc">أكبر متجر لقطع الغيار الأصلية والبديلة في القاهرة — ضمان الجودة والسعر المناسب</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showPage('products')">تسوق الآن &larr;</button>
+          <a href="tel:01012345678" class="btn-outline">📞 01012345678</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">+500</span><span class="stat-label">منتج</span></div>
+          <div class="stat"><span class="stat-num">+10K</span><span class="stat-label">عميل</span></div>
+          <div class="stat"><span class="stat-num">5⭐</span><span class="stat-label">تقييم</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHY US -->
+    <div class="why-us">
+      <div class="container">
+        <h2 class="section-title">ليه تختارنا؟</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🚚</div>
+            <h4>توصيل سريع</h4>
+            <p>توصيل لكل محافظات مصر خلال 24-48 ساعة</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✅</div>
+            <h4>ضمان الجودة</h4>
+            <p>جميع المنتجات أصلية مع ضمان 6 أشهر</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h4>أسعار منافسة</h4>
+            <p>أفضل الأسعار بدون وسيط — مباشر من المستورد</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h4>دعم فني</h4>
+            <p>فريق متخصص جاهز للمساعدة 7 أيام في الأسبوع</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED PRODUCTS -->
+    <div class="featured container">
+      <h2 class="section-title">المنتجات المميزة <span>Featured Products</span></h2>
+      <div class="products-grid" id="featuredGrid"></div>
+      <div class="view-all-wrap">
+        <button class="btn-primary" onclick="showPage('products')">عرض كل المنتجات →</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====== PAGE: PRODUCTS ====== -->
+  <section id="products" class="page">
+    <div class="page-hero">
+      <h1>🔩 كل المنتجات</h1>
+      <p>قطع غيار أصلية وبديلة لجميع السيارات</p>
+    </div>
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-cat="all">الكل</button>
+        <button class="filter-btn" data-cat="engine">المحرك</button>
+        <button class="filter-btn" data-cat="brakes">الفرامل</button>
+        <button class="filter-btn" data-cat="electrical">كهرباء</button>
+        <button class="filter-btn" data-cat="filters">فلاتر</button>
+      </div>
+      <div class="products-grid" id="allProductsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ====== PAGE: PRODUCT DETAILS ====== -->
+  <section id="product-detail" class="page">
+    <div class="container">
+      <button class="back-btn" onclick="goBack()">← رجوع</button>
+      <div class="detail-wrapper" id="detailWrapper"></div>
+    </div>
+  </section>
+
+  <!-- ====== PAGE: CONTACT ====== -->
+  <section id="contact" class="page">
+    <div class="page-hero">
+      <h1>📞 تواصل معنا</h1>
+      <p>نحن هنا لمساعدتك في أي وقت</p>
+    </div>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>بياناتنا</h3>
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>العنوان</strong>
+              <p>اسوان المدينه الصناعيه</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>الهاتف</strong>
+              <p><a href="tel:01012345678">01012345678</a></p>
+              <p><a href="tel:01098765432">01098765432</a></p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">⏰</span>
+            <div>
+              <strong>ساعات العمل</strong>
+              <p>السبت – الخميس: 9 ص – 9 م</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📧</span>
+            <div>
+              <strong>البريد الإلكتروني</strong>
+              <p>info@autoparts-egypt.com</p>
+            </div>
+          </div>
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/place/%D8%A3%D8%B3%D9%88%D8%A7%D9%86%D8%8C+%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9+%D8%A3%D8%B3%D9%88%D8%A7%D9%86%E2%80%AD/@24.0923724,32.9207059,14z/data=!3m1!4b1!4m6!3m5!1s0x14367b5ab1a30e5f:0xfb109fe337cabccb!8m2!3d24.088938!4d32.8998293!16zL20vMF8zOA?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+              width="100%" height="200" style="border:0;border-radius:12px;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <h3>أرسل لنا رسالة</h3>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label>الاسم الكامل</label>
+              <input type="text" placeholder="اكتب اسمك هنا..." required />
+            </div>
+            <div class="form-group">
+              <label>رقم الهاتف</label>
+              <input type="tel" placeholder="01xxxxxxxxx" required />
+            </div>
+            <div class="form-group">
+              <label>البريد الإلكتروني (اختياري)</label>
+              <input type="email" placeholder="example@email.com" />
+            </div>
+            <div class="form-group">
+              <label>الرسالة</label>
+              <textarea rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">إرسال الرسالة 📨</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⚙</span>
+        <span>AutoParts Egypt</span>
+      </div>
+      <p class="footer-copy">© 2024 AutoParts Egypt — جميع الحقوق محفوظة | اسوان مصر</p>
+    </div>
+    <hr>
+    <div>
+      <ul style="color: chocolate;">
+        <li>Yehia Khaled</li>
+        <li>Mustafa Gomaa</li>
+        <li>Bilal Mahmoud</li>
+        <li>Abdelrahman Talat</li>
+        <li>Saif El Deen Yasser</li>
+
+
+      </ul>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
